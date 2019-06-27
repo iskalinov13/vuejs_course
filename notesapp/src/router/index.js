@@ -4,8 +4,12 @@ import TodoList from '@/components/TodoList'
 import NewTodoList from '@/components/NewTodoList'
 import Home from '@/components/Home'
 
+// Components
+import Card from '../components/Card';
 
-Vue.use(Router)
+Vue.component('Card', Card);
+
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -14,13 +18,13 @@ export default new Router({
       name: 'Home',
       component: Home
     },
-    // {
-    //   path: '/posts/:index',
-    //   name: 'TodoList',
-    //   component: TodoList
-    // },
     {
-      path: '/posts/new',
+      path: '/posts/:index',
+      name: 'TodoList',
+      component: TodoList
+    },
+    {
+      path: '/posts-create',
       name: 'NewTodoList',
       component: NewTodoList
     },

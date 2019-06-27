@@ -1,64 +1,40 @@
 <template>
   <div>
-    <div class="box"  v-for='todo in todo_list' v-bind:key = todo.id  >
-        <h3>{{ todo.title }} </h3>
-        <p>{{ todo.description }}</p>
-        <button class="btn" @click='markAsDone(todo.id)'>{{ (todo.done) ? 'Unmark' : 'Mark as Done'  }}</button>
-    </div>
+    <Card :todo-list="todoList" />
   </div>
 </template>
 <script>
+  import Card from './Card';
+
   export default {
     name: 'Home',
     data() {
       return {
-        todo_list: []
+        todoList: []
       }
     },
     mounted() {
         if (localStorage.getItem('todolist')) {
-          this.todo_list = JSON.parse(localStorage.getItem('todolist'));
+          this.todoList = JSON.parse(localStorage.getItem('todolist'));
         }
     },
-    methods:{
-      markAsDone(index) {
-        console.log(index)
-        this.todo_list = JSON.parse(localStorage.getItem('todolist'));
-       // const todoIndex = this.todo_list.indexOf(index);
-        //this.todo_list[todoIndex].done = true;
-        localStorage.setItem('todolist', JSON.stringify(this.todolist));
-    },
-    }
+    // methods:{
+    //   updateSelected(selectedIndex){
+    //     var existing = localStorage.getItem('todolist');
+    //     existing = existing ? JSON.parse(existing) : {};
+
+    //     const title = existing[selectedIndex].title
+    //     const description = existing[selectedIndex].description
+    //     const done = !existing[selectedIndex].done
+    //     const temp =  { 'title' : title, 'description' : description, done: done };
+
+    //     existing[selectedIndex] = temp;
+    //     localStorage.setItem('todolist', JSON.stringify(existing));
+    //   }
+    // }
   }
 </script>
 
 <style>
-  h1 {
-      margin: 0px;
-  }
-  html,body{
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 10px;
-      padding: 0;
-  }
-  .box {
-      margin: 0 auto;
-      width: 400px;
-      border-radius: 15px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.2)
-  }
-  .box.done {
-        background-color: aquamarine;
-        border: none;
-        box-shadow: 0px 10px 30px rgba(aquamarine,0.4)
-  }
-  .btn{
-      background-color: rgba(0, 0, 0, 0.08);
-      padding: 10px 8px;
-      border: none;
-      border-radius: 5px;
-  }
+  
 </style>

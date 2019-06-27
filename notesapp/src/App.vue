@@ -2,7 +2,7 @@
   <div id="app">
     <router-link to = "/posts">Home</router-link>
     <!-- <router-link to = "/posts/id/">TodoList</router-link> -->
-    <router-link to = "/posts/new/">New TodoList</router-link>
+    <router-link to = "/posts-create">New TodoList</router-link>
     <router-view/>
   </div>
 </template>
